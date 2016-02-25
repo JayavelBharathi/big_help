@@ -73,3 +73,14 @@ setTimeout(fade_out, 5000);
 function fade_out() {
     $(".alert-success").fadeOut().empty();
 }
+
+function filter(element) {
+    var value = $(element).val();
+    $("#fromList li").each(function() {
+        if ($(this).text().search(new RegExp(value, "i")) > -1) {
+            $(this).show();
+        } else {
+            $(this).hide();
+        }
+    });
+}

@@ -18,6 +18,7 @@ class ConversationsController < ApplicationController
     @reciever = interlocutor(@conversation)
     @messages = @conversation.messages
     @message = Message.new
+    @templates = Template.all
   end
 
   private

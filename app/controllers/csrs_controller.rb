@@ -1,4 +1,5 @@
 class CsrsController < ApplicationController
+  before_filter :authenticate_user!
 
   def index
     @csr_users = User.where(:roles => "CSR")
@@ -32,6 +33,6 @@ class CsrsController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :roles, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :roles, :password, :password_confirmation, :csrg)
   end
 end

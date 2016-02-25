@@ -15,6 +15,24 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav pull-right">
         <% if user_signed_in? %>
+            <% if current_user.roles == "Admin" %>
+
+                <li>
+                  <%= link_to "Dashboard", root_path %>
+                </li>
+
+                <li>
+                  <%= link_to "Customers", customers_path %>
+                </li>
+
+                <li>
+                  <%= link_to "CSR'S", csrs_path %>
+                </li>
+
+                <li>
+                  <%= link_to "Templates", templates_path %>
+                </li>
+            <% end %>
             <li>
               <%= link_to "Hi, #{current_user.name}" %>
             </li>
