@@ -12,7 +12,7 @@
 
 <p>
   <strong>User:</strong>
-  <%= @ticket.user %>
+  <%= @ticket.user ? @ticket.user.name : "" %>
 </p>
 
 <p>
@@ -27,13 +27,13 @@
 
 <p>
   <strong>Requester:</strong>
-  <%= @ticket.requester %>
+  <%= @ticket.requester ? @ticket.requester.name : "" %>
 </p>
 
 <%= link_to "Add Attachments", new_ticket_attachment_path(:ticket_id => @ticket.id), :rel => "facebox", class: "btn btn-success btn-xs start-conversation" %><br>
 <% if @ticket.attachments.any? %>
   <b>List of Attachments</b>
-  <table>
+  <table class="table table-striped">
     <tbody>
       <% @ticket.attachments.each do |attachment| %>
         <tr>
@@ -49,11 +49,12 @@
 <%= link_to "Add Commnets", new_ticket_comment_path(:ticket_id => @ticket.id), :rel => "facebox", class: "btn btn-success btn-xs start-conversation" %><br>
 <% if @ticket.comments.any? %>
   <b>List of Comments</b>
-  <table>
+
+  <table class="table table-striped">
     <tbody>
       <% @ticket.comments.each do |comment| %>
         <tr>
-          <td><%= comment.user ? comment.user.name : "" %></td>
+          <th width="20%"><%= comment.user ? comment.user.name : "" %></th>
           <td><%= comment.content %></td>
         </tr>
       <% end %>

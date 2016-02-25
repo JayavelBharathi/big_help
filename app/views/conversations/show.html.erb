@@ -2,7 +2,7 @@
   <div class="chatboxtitle">
     <i class="fa fa-comments"></i>
 
-    <h1 class="font_15"><%= @reciever.name %> <%= link_to 'Create Ticket', new_ticket_path, class: "btn btn-success chat_ticket" %></h1>
+    <h1 class="font_15"><%= @reciever.name %> <%= link_to 'Create SR', new_ticket_path(:requester_id => @reciever.id), class: "btn btn-success chat_ticket" %></h1>
   </div>
   <div class="chatboxoptions">
     <%= link_to "<i class='fa  fa-minus'></i> ".html_safe, "#", class: "toggleChatBox", "data-cid" => @conversation.id %>

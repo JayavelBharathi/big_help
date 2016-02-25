@@ -12,25 +12,31 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br>
+    <%= f.label "Problem Summary" %><br>
     <%= f.text_field :title, class: 'form-control width_40' %>
   </div>
   <div class="field">
-    <%= f.label :description %><br>
+    <%= f.label "Problem Description" %><br>
     <%= f.text_area :description, class: 'form-control width_40 resize' %>
   </div>
   
   <div class="field">
     <%= f.label :priority %><br>
-    <%= f.select :priority, options_for_select([1,2,3,4,5]) %>
+    <%= f.select :priority, options_for_select([1,2,3,4,5], @ticket.priority) %>
   </div>
   <div class="field">
-    <%= f.label :status %> : <%= @ticket.status %>
+    <% if @ticket.new_record? %>
+      <%= f.label :status %> : <%= @ticket.status %>
+    <% else %>
+      <%= f.label :status %><br>
+      <%= f.select :status, options_for_select(["New", "Open", "In-Progress", "Close", "Duplicate", "Invalid"], @ticket.status) %>
+    <% end %>
   </div>
   <div class="field">
     <%= f.label :requester_id %> : <%= @ticket.requester ? @ticket.requester.name : "" %>
+    <%= f.hidden_field :requester_id %>
   </div>
   <div class="actions">
-    <%= f.submit "Create Ticket", class: "btn btn-success" %>
+    <%= f.submit "Save", class: "btn btn-success" %>
   </div>
 <% end %>

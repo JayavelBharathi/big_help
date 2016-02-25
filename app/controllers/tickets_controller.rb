@@ -18,7 +18,7 @@ class TicketsController < ApplicationController
   def new
     @ticket = Ticket.new
     @ticket.user_id = current_user.id
-    @ticket.requester_id = current_user.id
+    @ticket.requester_id = params[:requester_id]
   end
 
   # GET /tickets/1/edit
@@ -29,7 +29,7 @@ class TicketsController < ApplicationController
   # POST /tickets.json
   def create
     @ticket = Ticket.new(ticket_params)
-
+    @ticket.user_id = current_user.id
     respond_to do |format|
       if @ticket.save
         format.html { redirect_to @ticket, notice: 'Ticket was successfully created.' }
