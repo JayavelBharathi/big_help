@@ -68,3 +68,8 @@ var ready = function () {
 
 $(document).ready(ready);
 $(document).on("page:load", ready);
+
+setTimeout(fade_out, 5000);
+function fade_out() {
+    $(".alert-success").fadeOut().empty();
+}

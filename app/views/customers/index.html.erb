@@ -1,6 +1,7 @@
+<% unless @customers.blank? %>
 <h1>Listing customers</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Name</th>
@@ -27,7 +28,7 @@
     <% end %>
   </tbody>
 </table>
-
+<% end %>
 <br>
 
-<%= link_to 'New Customer', new_customer_path %>
+<%= link_to 'New Customer', new_customer_path, class: "btn btn-success" %>
