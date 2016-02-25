@@ -1,6 +1,7 @@
+<% unless @tickets.blank? %>
 <h1>Listing tickets</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Title</th>
@@ -29,7 +30,7 @@
     <% end %>
   </tbody>
 </table>
-
+<% end %>
 <br>
 
-<%= link_to 'New Ticket', new_ticket_path %>
+<%= link_to 'New Ticket', new_ticket_path, class: "btn btn-success" %>

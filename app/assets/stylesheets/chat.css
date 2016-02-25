@@ -95,6 +95,14 @@ body{
     display: none;
 }
 
+.width_40{
+    width: 40% !important;
+}
+
+.resize{
+    resize:none;
+}
+
 .chatboxhead {
     background: #666;
     color: white;
