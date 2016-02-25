@@ -25,7 +25,7 @@ class CustomersController < ApplicationController
   # POST /customers.json
   def create
     @customer = Customer.new(customer_params)
-
+    @customer.csrg = params[:csrg]
     respond_to do |format|
       if @customer.save
         format.html { redirect_to @customer, notice: 'Customer was successfully created.' }
@@ -41,6 +41,8 @@ class CustomersController < ApplicationController
   # PATCH/PUT /customers/1.json
   def update
     respond_to do |format|
+      customer_params[:csrg] = params[:csrg]
+
       if @customer.update(customer_params)
         format.html { redirect_to @customer, notice: 'Customer was successfully updated.' }
         format.json { render :show, status: :ok, location: @customer }
@@ -69,6 +71,6 @@ class CustomersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def customer_params
-      params.require(:customer).permit(:name, :desc, :status)
+      params.require(:customer).permit(:name, :desc, :status, :email, :csrg)
     end
 end

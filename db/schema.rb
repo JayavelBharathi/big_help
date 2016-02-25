@@ -11,7 +11,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160225102057) do
+ActiveRecord::Schema.define(version: 20160225105611) do
+
   create_table "attachments", force: true do |t|
     t.text     "description"
     t.integer  "ticket_id"
@@ -53,7 +54,7 @@ ActiveRecord::Schema.define(version: 20160225102057) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "email"
-    t.integer  "csrg_id"
+    t.string   "csrg"
   end
 
   create_table "group_users", force: true do |t|
@@ -73,16 +74,6 @@ ActiveRecord::Schema.define(version: 20160225102057) do
 
   add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id"
   add_index "messages", ["user_id"], name: "index_messages_on_user_id"
-
-  create_table "templates", force: true do |t|
-    t.string   "title"
-    t.text     "description"
-    t.integer  "parent_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "templates", ["parent_id"], name: "index_templates_on_parent_id"
 
   create_table "tickets", force: true do |t|
     t.string   "title"
