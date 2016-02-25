@@ -1,6 +1,6 @@
 class AttachmentsController < ApplicationController
-  before_action :set_attachment, only: [:show, :edit, :update, :destroy]
-  before_action :find_parent, except: [:index]
+  before_action :set_attachment, only: [:show, :edit, :update, :destroy, :download]
+  before_action :find_parent, except: [:index, :download]
 
   # GET /attachments
   # GET /attachments.json
@@ -59,9 +59,13 @@ class AttachmentsController < ApplicationController
   def destroy
     @attachment.destroy
     respond_to do |format|
-      format.html { redirect_to attachments_url, notice: 'Attachment was successfully destroyed.' }
+      format.html { redirect_to request.env['HTTP_REFERER'], notice: 'Attachment was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def download
+    send_file @attachment.file.path, :type => @attachment.file_content_type, :filename => @attachment.file_file_name
   end
 
   private

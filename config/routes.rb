@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   resources :customers
 
   resources :tickets do
-    resources :attachments
+    resources :attachments do
+      member do
+        get 'download'
+      end
+    end
     resources :comments
   end
 

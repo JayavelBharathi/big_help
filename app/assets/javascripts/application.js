@@ -17,3 +17,5 @@
 //= require chat
 //= require turbolinks
 //= require_tree .
+//= require rails-timeago
+//= require rails-timeago-all

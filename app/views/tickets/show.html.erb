@@ -1,15 +1,18 @@
+<p id="notice"><%= notice %></p>
+<h3> Service Request # SR<%= @ticket.id %> </h3>
+<br>
 <p>
-  <strong>Title:</strong>
+  <strong>Problem Summary:</strong>
   <%= @ticket.title %>
 </p>
 
 <p>
-  <strong>Description:</strong>
+  <strong>Problem Description:</strong>
   <%= @ticket.description %>
 </p>
 
 <p>
-  <strong>User:</strong>
+  <strong>Created By:</strong>
   <%= @ticket.user ? @ticket.user.name : "" %>
 </p>
 
@@ -33,10 +36,12 @@
   <b>List of Attachments</b>
   <table class="table table-striped">
     <tbody>
-      <% @ticket.attachments.each do |attachment| %>
+      <% @ticket.attachments.order(created_at: :desc).each do |attachment| %>
         <tr>
+          <td width="15%"><%= timeago_tag attachment.created_at, :nojs => true, :limit => 10.days.ago %></td>
           <td><%= attachment.description %></td>
-          <!-- <td><%= link_to 'Download', "#" %> <%= link_to 'Destroy', "#", method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+          <td><%= link_to 'Download', download_ticket_attachment_path(@ticket, attachment) %>
+          <td><%= link_to 'Destroy', [@ticket, attachment], method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     </tbody>
@@ -50,8 +55,9 @@
 
   <table class="table table-striped">
     <tbody>
-      <% @ticket.comments.each do |comment| %>
+      <% @ticket.comments.order(created_at: :desc).each do |comment| %>
         <tr>
+          <td width="15%"><%= timeago_tag comment.created_at, :nojs => true, :limit => 10.days.ago %></td>
           <th width="20%"><%= comment.user ? comment.user.name : "" %></th>
           <td><%= comment.content %></td>
         </tr>
