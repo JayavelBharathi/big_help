@@ -1,0 +1,34 @@
+<h1>Listing templates</h1>
+
+<br>
+
+<%= link_to 'New Template', new_template_path %>
+<div class="row">
+  <div class="col-md-4" style="padding-top: 2%;">
+    <div class="panel panel-default">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Customer</th>
+          <th colspan="3"></th>
+        </tr>
+        </thead>
+        <tbody>
+          <% @templates.each do |template| %>
+            <tr>
+              <td><%= template.title %></td>
+              <td><%= template.description %></td>
+              <td><%= template.parent ? template.parent.name : "" %></td>
+              <td><%= link_to 'Show', template %></td>
+              <td><%= link_to 'Edit', edit_template_path(template) %></td>
+              <td><%= link_to 'Destroy', template, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+</div>

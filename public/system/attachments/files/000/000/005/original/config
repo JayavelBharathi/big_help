@@ -1,0 +1,2 @@
+Host github.com
+  ProxyCommand nc -x www-proxy.us.oracle.com:80 -Xconnect github.com 22

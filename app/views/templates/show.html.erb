@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @template.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @template.description %>
+</p>
+
+<p>
+  <strong>Parent:</strong>
+  <%= @template.parent ? @template.parent.name : "" %>
+</p>
+
+<%= link_to 'Edit', edit_template_path(@template) %> |
+<%= link_to 'Back', templates_path %>
