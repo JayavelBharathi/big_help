@@ -1,0 +1,107 @@
+Linux OBI
+Version: 6.4.64.0
+Date: (06/2013)
+
+Purpose: To automate, simplify and standardize the Linux desktop interface and
+installation process for Oracle Linux 6.
+
+
+Installed Components
+====================
+
+Apache OpenOffice 3.4.1
+Adobe Acrobat Reader Version 9.5.4
+JRE 1.7.0_25
+KDE 4.3.4
+Perl 5.10.1
+Python 2.6.6
+Gimp 2.6.9
+Pidgin 2.10.6
+rkhunter-1.3.8
+Firefox 10.0.12 (update to ESR 17)
+Thunderbird 17 ESR
+McAfee Virusscan Enterprise 1.7.1
+Kernel and Development Packages
+kernel UEK2 based on 2.6.39
+
+A third party, such as a customer or partner, who wishes to reproduce, modify,
+display, or distribute an Oracle copyrighted work must first get permission
+from Oracle.
+
+Further guidance on these and other copyright issues is available in the
+Copyright section of the Oracle Legal Portal. For more information, please
+contact the Legal Department at copyright_us@oracle.com or 650/506-5200.
+
+
+Supported systems
+=================
+
+Currently have automated and supported installation for network, video and
+sound for the following type of hardware:
+
+Dell: E6330, E6430, Optiplex 7010
+Toshiba: Portege R930, Tecra R940
+Lenovo: ThinkPad T430, ThinkPad X230, ThinkCentre M82
+
+Other (older) machines are expected to work fine with Linux OBI 6.4.64.0, but they weren't tested.
+
+
+Known issues at the time of the build
+=====================================
+
+X230
+- tapping or double-tapping on the touchpad as an alternative to clicking does not work.
+- bluetooth remained disabled even after enabling it.
+- sound goes bad when shutting down or restarting.
+
+R940
+- tapping or double-tapping on the touchpad as an alternative to clicking does not work.
+- bluetooth remains disabled even after enabling it.
+- sound goes bad when shutting down or restarting.
+
+R930
+- tap to click (Touchpad) is not working. 
+
+E6430
+- poor audio during PC shut down.
+
+T430
+- bluetooth is not working . If Bluetooth is on or off , it is always showing a red cross (which shows the Bluetooth is off) . It is not able to detect other Bluetooth devices nearby .
+- the touch pad tap is not working for Lenovo T430 . It is only highlighting the icon but when tapped twice/once
+
+
+Installation
+============
+
+To Load: insert DVD and reboot system. Choose the installation option
+(destructive or interactive) and proceed according to the installation instructions
+available online: http://mydesktop.oraclecorp.com/myd_files/myd_static/obi/lobi6.4_installationinstructions.shtml 
+
+The packages should then begin installing.  When finished, a screen prompt will appear.
+Hit <ENTER> to reboot the system.  The DVD should be removed before rebooting.
+
+Upon first system start, the Linux OBI configurator screen
+(known as the OBICC) screen will appear, prompting the user for the
+following:
+
+First Name
+Last Name
+Username (e.g. - jdoe)
+Email address
+Machine Name
+Desktop environment
+Proxy Server
+Time Zone
+Language
+Keyboard
+
+Password (synchronized with root and nails password)
+
+The machine will restart.  Enter the login name as defined previously.
+
+
+GETTING HELP
+============
+
+Email all issues & comments regarding the Linux OBI to gds_linuxnews_ww_grp@oracle.com or
+register on the http://myforums.oracle.com

@@ -30,5 +30,45 @@
   <%= @ticket.requester %>
 </p>
 
+<%= link_to "Add Attachments", new_ticket_attachment_path(:ticket_id => @ticket.id), :rel => "facebox", class: "btn btn-success btn-xs start-conversation" %><br>
+<% if @ticket.attachments.any? %>
+  <b>List of Attachments</b>
+  <table>
+    <tbody>
+      <% @ticket.attachments.each do |attachment| %>
+        <tr>
+          <td><%= attachment.description %></td>
+          <!-- <td><%= link_to 'Download', "#" %> <%= link_to 'Destroy', "#", method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<br>
+<%= link_to "Add Commnets", new_ticket_comment_path(:ticket_id => @ticket.id), :rel => "facebox", class: "btn btn-success btn-xs start-conversation" %><br>
+<% if @ticket.comments.any? %>
+  <b>List of Comments</b>
+  <table>
+    <tbody>
+      <% @ticket.comments.each do |comment| %>
+        <tr>
+          <td><%= comment.user ? comment.user.name : "" %></td>
+          <td><%= comment.content %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+<br>
 <%= link_to 'Edit', edit_ticket_path(@ticket) %> |
 <%= link_to 'Back', tickets_path %>
+
+<script src="jquery.js" type="text/javascript"></script>
+<script src="facebox.js" type="text/javascript"></script>
+<script type="text/javascript">
+  jQuery(document).ready(function($) {
+    $('a[rel*=facebox]').facebox({
+    })
+  })
+</script>

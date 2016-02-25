@@ -1,5 +1,6 @@
 class AttachmentsController < ApplicationController
   before_action :set_attachment, only: [:show, :edit, :update, :destroy]
+  before_action :find_parent, except: [:index]
 
   # GET /attachments
   # GET /attachments.json
@@ -14,7 +15,8 @@ class AttachmentsController < ApplicationController
 
   # GET /attachments/new
   def new
-    @attachment = Attachment.new
+    @attachment = Attachment.new(:ticket => @ticket)
+    render :layout => false
   end
 
   # GET /attachments/1/edit
@@ -25,11 +27,12 @@ class AttachmentsController < ApplicationController
   # POST /attachments.json
   def create
     @attachment = Attachment.new(attachment_params)
-
+    @attachment.ticket = @ticket
+    @attachment.user = current_user
     respond_to do |format|
       if @attachment.save
-        format.html { redirect_to @attachment, notice: 'Attachment was successfully created.' }
-        format.json { render :show, status: :created, location: @attachment }
+        format.html { redirect_to @ticket, notice: 'Attachment was successfully created.' }
+        format.json { render :show, status: :created, location: @ticket }
       else
         format.html { render :new }
         format.json { render json: @attachment.errors, status: :unprocessable_entity }
@@ -65,6 +68,10 @@ class AttachmentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_attachment
       @attachment = Attachment.find(params[:id])
+    end
+
+    def find_parent
+      @ticket = Ticket.find(params[:ticket_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -8,7 +8,7 @@
   <meta name="author" content="">
   <meta content='<%= user_signed_in? ? current_user.id : "" %>' name='user-id'/>
 
-  <title>Chatty</title>
+  <title>Oracle MyHelp</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag '//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -27,7 +27,7 @@
 
 <%= render 'layouts/nav' %>
 
-<div class="container">
+<div class="container internal_body">
   <% if alert %>
       <div class="alert alert-danger" role="alert"><%= alert %></div>
   <% end %>

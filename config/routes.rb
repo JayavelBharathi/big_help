@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
 
   resources :customers
-  resources :comments
 
-  resources :attachments
-
-  resources :tickets
+  resources :tickets do
+    resources :attachments
+    resources :comments
+  end
 
   devise_for :users
 
