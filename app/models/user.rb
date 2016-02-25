@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
 
   after_create :create_default_conversation
 
-  serialize :roles, Array
+  # serialize :roles, Array
 
 
   private

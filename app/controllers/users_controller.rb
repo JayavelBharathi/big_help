@@ -5,4 +5,10 @@ class UsersController < ApplicationController
       @users = User.where.not("id = ?",current_user.id).order("created_at DESC")
       @conversations = Conversation.involving(current_user).order("created_at DESC")
   end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:role)
+  end
 end
