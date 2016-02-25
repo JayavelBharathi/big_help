@@ -1,6 +1,6 @@
 <div class="row login-container" style="height: 80%;">
   <div class="col-md-10 padding">
-    <legend>Sign up to chat!</legend>
+    <legend>Add Customer Service Representative</legend>
     <%= form_for(@user, url: csrs_path, method: :POST) do |f| %>
         <% if @user.errors.any? %>
             <div id="error_explanation">
@@ -19,13 +19,16 @@
           <%= f.text_field :name, autofocus: true, class: "form-control" %></div>
 
         <div class="form-group">
-          <%= f.label :roles %>
-          <%= f.text_field :roles, value: "CSR", class: "form-control", readonly: true %></div>
-
+          <%= f.label :csrg, "Customer Service Group" %>
+          <%= f.select :csrg, ['CSG1', 'CSG2', 'CSG3', 'CSG4', 'CSG5'], class: "dropdown-menu dropdownMenu" %></div>
 
         <div class="form-group">
           <%= f.label :email %>
           <%= f.email_field :email, class: "form-control" %></div>
+
+        <div class="form-group">
+          <%= f.label :roles, "Role" %>
+          <%= f.text_field :roles, value: "CSR", class: "form-control", readonly: true %></div>
 
         <div class="form-group">
           <%= f.label :password %>
@@ -35,7 +38,7 @@
           <%= f.label :password_confirmation %>
           <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %></div>
 
-        <div><%= f.submit "Sign up", class: "btn btn-success" %></div>
+        <div><%= f.submit "Create", class: "btn btn-success" %></div>
     <% end %>
     <hr>
 

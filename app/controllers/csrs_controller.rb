@@ -14,7 +14,7 @@ class CsrsController < ApplicationController
     respond_to do |format|
       if @user.save
 
-        format.html { redirect_to csrs_path, notice: 'Customer Suppoert rep was successfully created.' }
+        format.html { redirect_to csrs_path, notice: 'Customer Service Representative was successfully created.' }
         format.json { render :index, status: :created, location: @user }
       else
         format.html { render :new }

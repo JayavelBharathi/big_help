@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160225105611) do
+ActiveRecord::Schema.define(version: 20160225120915) do
 
   create_table "attachments", force: true do |t|
     t.text     "description"
@@ -116,6 +116,7 @@ ActiveRecord::Schema.define(version: 20160225105611) do
     t.integer  "user_id"
     t.integer  "cust_id"
     t.text     "roles"
+    t.string   "csrg"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

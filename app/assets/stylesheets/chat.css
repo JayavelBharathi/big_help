@@ -112,6 +112,8 @@ body{
     font-size: 13px !important;
 }
 
+.brand{margin-left: -10px !important;margin-top: -5px !important;}
+
 .chatboxhead {
     background: #666;
     color: white;
