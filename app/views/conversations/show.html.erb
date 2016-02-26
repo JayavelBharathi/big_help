@@ -1,31 +1,23 @@
 <div class="chatboxhead">
   <div class="chatboxtitle">
     <i class="fa fa-comments"></i>
-
-    <h1 class="font_15"><%= @reciever.name %>
-      <%= link_to new_ticket_path(:requester_id => @reciever.id), class: "chat_ticket" do %>
-          SR <%= image_tag('pen-checkbox-128.png', style: "width: 8%;margin-top: -7px;") %>
-      <% end %>
-      <% if current_user.roles != "Customer" %>
-          <%= mail_to "durgesh.tripathi2@gmail.com", raw(image_tag("Mail+Icon.png", style: 'width: 12%;')) %>
-      <% end %>
-    </h1>
-  </div>
-  <div class="chatboxoptions">
-    <%= link_to "<i class='fa  fa-minus'></i> ".html_safe, "#", class: "toggleChatBox", "data-cid" => @conversation.id %>&nbsp;
-    <div id="templates_dropdown" class="dropdown">
-      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-        <span class="caret"></span></button>
-      <ul class="dropdown-menu">
-        <% @templates.each {|template| %>
-            <li><a href="#" class="temp-title" id="template-<%=template.id%>" data="<%= template.description %>"><%= template.title %></a></li>
-        <% } %>
-      </ul>
+    <h1 class="font_15"><%= @reciever.name %></h1>
+    <div class="pull-right" style="margin-right: -30px;">
+      <%= link_to "<i class='fa  fa-minus'></i> ".html_safe, "#", class: "toggleChatBox", "data-cid" => @conversation.id %>&nbsp;
+      <%= link_to "<i class='fa  fa-times'></i> ".html_safe, "#", class: "closeChat", "data-cid" => @conversation.id %>
     </div>
-    &nbsp;
-    <%= link_to "<i class='fa  fa-times'></i> ".html_safe, "#", class: "closeChat", "data-cid" => @conversation.id %>
   </div>
 </div>
+ <div class="chatboxhead">
+  <%= link_to new_ticket_path(:requester_id => @reciever.id), class: "chat_ticket" do %>
+      SR <%= image_tag('pen-checkbox-128.png', style: "width: 8%;margin-top: -7px;") %>
+  <% end %>
+   &nbsp;&nbsp;
+  <% if current_user.roles != "Customer" %>
+      <%= mail_to "durgesh.tripathi2@gmail.com", raw(image_tag("Mail+Icon.png", style: 'width: 12%;')) %>
+  <% end %>
+</div>
+
 <div class="chatboxcontent">
   <% if @messages.any? %>
       <%= render @messages %>
